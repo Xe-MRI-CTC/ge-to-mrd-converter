@@ -44,8 +44,8 @@ acqblock.head.trajectory_dimensions = 3*ones(1,2*nY);
 
 K = zeros(nX,2*nY);
 T = zeros(3,nX,2*nY);
-K(:,1:2:end) = conj(k_gp);
-K(:,2:2:end) = conj(k_dp);
+K(:,1:2:end) = k_gp;
+K(:,2:2:end) = k_dp;
 
 T(1,:,1:2:end) = x_gp;
 T(2,:,1:2:end) = y_gp;
@@ -60,11 +60,11 @@ for acqno = 1:2*nY
     acqblock.head.idx.kspace_encode_step_1(acqno) = acqno-1;
     acqblock.head.idx.repetition(acqno) = 0;
     
-   
+    
     if mod(acqno,2)
-        acqblock.head.idx.contrast(acqno) = 1;  % odd numbered views gas
-    else
         acqblock.head.idx.contrast(acqno) = 2;  % even numbered views dissolved
+    else
+        acqblock.head.idx.contrast(acqno) = 1;  % odd numbered views gas
     end
     
     acqblock.head.measurement_uid(acqno) = 0;  % no bonus spectra, set to 1 if bonus spectra
