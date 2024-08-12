@@ -62,9 +62,9 @@ for acqno = 1:2*nY
     
     
     if mod(acqno,2)
-        acqblock.head.idx.contrast(acqno) = 2;  % even numbered views dissolved
+        acqblock.head.idx.contrast(acqno) = 1;  % even numbered views gas
     else
-        acqblock.head.idx.contrast(acqno) = 1;  % odd numbered views gas
+        acqblock.head.idx.contrast(acqno) = 2;  % odd numbered views dissolved
     end
     
     acqblock.head.measurement_uid(acqno) = 0;  % no bonus spectra, set to 1 if bonus spectra
